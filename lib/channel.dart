@@ -24,6 +24,11 @@ class ApiMovilesChannel extends ApplicationChannel {
   @override
   Future prepare() async {
     logger.onRecord.listen((rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
+
+    final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
+    final persistenStore = PostgreSQLPersistentStore.fromConnectionInfo("moviles", "moviles", "127.0.0.1", 5432, "classroom");
+
+    context = ManagedContext(dataModel,persistenStore);
   }
 
   /// Construct the request channel.
