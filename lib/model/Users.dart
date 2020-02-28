@@ -9,7 +9,7 @@ import 'package:api_moviles/model/CommentActivity.dart';
 class User extends ManagedObject<tblUser> implements tblUser{}
 class tblUser{
 
-  @Column(primaryKey: true)
+  @primaryKey
   int id;
 
   String name;
